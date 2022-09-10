@@ -1,0 +1,115 @@
+Algoritmo arreglos_unidimensionales
+	Definir opc Como Entero
+	Definir buffer Como Entero
+	Definir size Como Entero
+	
+	
+	Escribir "Bienvenido al programa de Arreglos Unidimensionales."
+	Escribir "Por favor, introduzca el tamaño del arreglo (número Entero Positivo > 0)" 
+	Leer size
+	Dimension list[size]
+	
+	Repetir
+		Limpiar Pantalla
+		Escribir "MENU DE ARREGLOS UNIDIMENSIONALES"
+		Escribir " 1. Ingresar valores al arreglo"
+		Escribir " 2. Imprimir valores del arreglo"
+		Escribir " 3. Imprimir el valor mas alto del arreglo"
+		Escribir " 4. Imprimir el valor mas bajo del arreglo"
+		Escribir " 5. Imprimir la suma total del arreglo"
+		Escribir " 6. Imprimir el arreglo al reves"
+		Escribir " 7. Imprimir el resumen de números pares y números impares"
+		Escribir " 8. Imprimir el arreglo elevado al cuadrado"
+		Escribir " 9. Imprimir los números primos"
+		Escribir "10. Salir"
+		
+		Escribir "Ingresar opcion del menu: "
+		Leer opc
+		
+		Segun opc Hacer
+			1:
+				Escribir "Ingresando valores al arreglo"
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					Escribir "Ingrese un numero para la posición ",i 
+					Leer list[i]
+				FinPara
+				Escribir "Proceso finalizado..."
+			2:
+				Escribir "Imprimiendo valores del arreglo"
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					Escribir "Posicion [",i,"]:",list[i] 
+				FinPara
+			3:
+				Escribir "Imprimiendo el valor mas alto del arreglo"
+				buffer<-0
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					Si list[i] es mayor que buffer Entonces
+						buffer=list[i]
+					FinSi
+				FinPara
+				Escribir "El numero mayor es: " , buffer
+			4:
+				Escribir "Imprimiendo el valor mas bajo del arreglo"
+				buffer<-0
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					Si i == 1 Entonces
+						buffer=list[i]
+					Finsi
+					Si list[i] es menor que buffer Entonces
+						buffer=list[i]
+					FinSi
+				FinPara
+				Escribir "El numero menor es: " , buffer
+			5:
+				Escribir "Imprimiendo la suma total del arreglo"
+				buffer<-0
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					buffer= buffer+list[i]
+				FinPara
+				Escribir "La suma del arreglo es: " , buffer
+			6:
+				Escribir "Imprimiendo el arreglo al reves"
+				Para i<-size Hasta 1 Con Paso -1 Hacer
+					Escribir "Posicion [",i,"]:",list[i] 
+				FinPara
+			7: 
+				Escribir "Imprimiendo el resumen de números pares y números impares"
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					Si list[i] <= 0 Entonces
+						Escribir "Posicion [",i,"]:",list[i], ", no se puede definir como par o impar porque es menor o igual a 0."
+					SiNo
+						Si list[i] mod 2 == 0 Entonces
+							Escribir "Posicion [",i,"]:",list[i], ", es par."
+						SiNo
+							Escribir "Posicion [",i,"]:",list[i], ", es impar."
+						FinSi
+					FinSi
+				FinPara
+			8: 
+				Escribir "Imprimiendo cada elemento del arreglo elevado al cuadrado."
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					Escribir "Posicion [",i,"]:",list[i], ", y elevado al cuadrado es: ", list[i]^2;
+				FinPara
+			9: 
+				Escribir "Imprimiendo los números primos."
+				Para i<-1 Hasta size Con Paso 1 Hacer
+					buffer<-0
+					Para x<-1 Hasta list[i] Con Paso 1 Hacer
+						Si list[i] % x = 0 Entonces
+							buffer<-buffer+1
+						Fin Si
+					FinPara
+					Si buffer = 2 Entonces
+						Escribir "Posicion [",i,"]:",list[i], ", SI es número primo." 
+					SiNo
+						Escribir "Posicion [",i,"]:",list[i], ", no es número primo."
+					Fin Si
+				FinPara
+			10: 
+				Escribir "Adiós, gracias por usar el programa."
+			De Otro Modo:
+				Escribir "Opps algo salio mal, por favor ingrese una opción diferente."
+		Fin Segun
+		Esperar Tecla
+	Hasta Que opc=10
+FinAlgoritmo
